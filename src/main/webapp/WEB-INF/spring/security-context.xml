@@ -9,8 +9,8 @@
 		class="net.developia.sec.security.CustomAccessDeniedHandler" />
 	<bean id="customLoginSuccess"
 		class="net.developia.sec.security.CustomLoginSuccessHandler" />
-	<bean id="customPasswordEncoder"
-		class="net.developia.sec.security.CustomNoOpPasswordEncoder" />
+	<bean id="bcryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 		
 	<security:http>
 		<security:intercept-url 
@@ -34,8 +34,17 @@
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource"/>
-			<security:password-encoder ref="customPasswordEncoder" />
+			<security:jdbc-user-service data-source-ref="dataSource" 
+			
+			users-by-username-query="
+			select userid AS username, userpw AS password, 'true' AS enabled 
+			from   tbl_member where userid=?" 
+
+			authorities-by-username-query="
+			select userid AS username, auth AS authority 
+			from tbl_member_auth 
+			where userid=?" /> 
+			<security:password-encoder ref="bcryptPasswordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
