@@ -10,7 +10,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/sample")
 @Controller
 public class SampleController {
-	
+
 	@GetMapping("/all")
 	public void doAll() {
 		log.info("do all can access everybody");
