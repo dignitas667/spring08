@@ -43,6 +43,11 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			response.sendRedirect(contextPath + "/sample/member");
 			return;
 		}
+		
+		if (roleNames.contains("ROLE_USER")) {
+			response.sendRedirect(contextPath + "/sample/member");
+			return;
+		}
 
 		response.sendRedirect(contextPath + "/");
 	}
