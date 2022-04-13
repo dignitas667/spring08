@@ -9,7 +9,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>/sample/admin page</h1>
-<a href="${app}/customLogout">Logout</a>
+<h1> Logout Page</h1>
+
+<form action="${app}/customLogout" method='post'>
+<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
+<button>로그아웃</button>
+</form>
+
 </body>
 </html>
