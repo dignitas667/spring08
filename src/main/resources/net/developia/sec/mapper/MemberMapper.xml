@@ -20,7 +20,7 @@
 	<select id="read" resultMap="memberMap">
 		SELECT mem.userid, userpw, username, enabled, regdate, updatedate, auth
 		FROM   tbl_member mem
-		LEFT   OUTER JOIN tbl_member_auth auth ON mem.userid = auth.userid
+		LEFT   JOIN tbl_member_auth auth ON mem.userid = auth.userid
 		WHERE  mem.userid = #{userid}
 	</select>
 
