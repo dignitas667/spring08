@@ -2,3 +2,4 @@
 /.settings/
 /build/
 !/src/
+/src/main/webapp/WEB-INF/spring/dataSource-context.xml
